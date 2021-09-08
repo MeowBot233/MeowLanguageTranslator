@@ -1,0 +1,10 @@
+<Router AppAssembly="@typeof(Program).Assembly" PreferExactMatches="@true">
+    <Found Context="routeData">
+        <RouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
+    </Found>
+    <NotFound>
+        <LayoutView Layout="@typeof(MainLayout)">
+            <MudText Typo="Typo.h4" Align="Align.Center">The cat you are looking for can not be found!</MudText>
+        </LayoutView>
+    </NotFound>
+</Router>

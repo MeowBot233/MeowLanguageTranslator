@@ -1,0 +1,75 @@
+﻿@inherits LayoutComponentBase
+@inject NavigationManager NavigationManager
+
+<MudThemeProvider Theme="MyCustomTheme"/>
+<MudDialogProvider />
+<MudSnackbarProvider />
+
+<MudLayout>
+    <MudAppBar Elevation="1">
+        @if (CanBack)
+        {
+            <MudIconButton Icon="@Icons.Material.Filled.ArrowBack" Color="Color.Inherit" Edge="Edge.Start" @onclick="@(()=> BackEvent?.Invoke())" />
+        }
+        <MudText Typo="Typo.h5" Class="ml-3">@Title</MudText>
+        <MudSpacer />
+        @if (!CanBack)
+        {
+            <MudTooltip Text="关于">
+                <MudIconButton Icon="@Icons.Material.Filled.Info" Color="Color.Inherit" Link="/about" />
+            </MudTooltip>
+        }
+        <MudTooltip Text="去Github看代码">
+            <MudIconButton Icon="@Icons.Custom.Brands.GitHub" Color="Color.Inherit" Edge="Edge.End" />
+        </MudTooltip>
+    </MudAppBar>
+
+    <MudMainContent>
+        <MudContainer MaxWidth="MaxWidth.Large">
+            <CascadingValue Value="this">
+                <div class="content">
+                    @Body
+                </div>
+            </CascadingValue>
+        </MudContainer>
+    </MudMainContent>
+</MudLayout>
+
+
+
+
+@code{
+    private string title;
+    public string Title
+    {
+        get => title;
+        set
+        {
+            title = value;
+            InvokeAsync(() => StateHasChanged());
+        }
+    }
+
+    private bool canBack = false;
+    public bool CanBack
+    {
+        get => canBack;
+        set
+        {
+            canBack = value;
+            InvokeAsync(() => StateHasChanged());
+        }
+    }
+
+    public delegate void Back();
+    public event Back BackEvent;
+
+    MudTheme MyCustomTheme = new MudTheme()
+    {
+        Palette = new Palette()
+        {
+            Primary = new MudBlazor.Utilities.MudColor("FF9CA8"),
+            AppbarBackground = new MudBlazor.Utilities.MudColor("FF9CA8")
+        }
+    };
+}

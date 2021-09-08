@@ -1,0 +1,68 @@
+﻿@page "/"
+@inject ISnackbar Snackbar
+@inject ClipboardService clipboard
+
+<MudGrid>
+    <MudItem xs="12">
+        <MudTextField Label="猫咪要填写在这里"
+                      Variant="Variant.Outlined"
+                      T="string"
+                      Lines="3"
+                      Clearable="true"
+                      DebounceInterval="1"
+                      OnDebounceIntervalElapsed="meow" />
+    </MudItem>
+    <MudItem xs="12">
+        <MudField Label="这里会显示结果喵" Variant="Variant.Text">@result</MudField>
+    </MudItem>
+    @if (canCopy)
+    {
+        <MudItem xs="12">
+            <MudButton Variant="Variant.Outlined" Color="Color.Primary" FullWidth="true" @onclick="copy">复制</MudButton>
+        </MudItem>
+    }
+
+</MudGrid>
+
+
+@using 喵语翻译器
+@code
+{
+    [CascadingParameter] MainLayout layout { get; set; }
+    public string result = "什么都没有呢喵~";
+    public bool canCopy = false;
+    protected override void OnInitialized()
+    {
+        layout.CanBack = false;
+        layout.Title = "喵语翻译器";
+        base.OnInitialized();
+    }
+
+    void meow(string cat)
+    {
+        result = "猫咪努力工作中~";
+        cat = cat.TrimEnd(' ', '\n');
+        if (string.IsNullOrWhiteSpace(cat))
+        {
+            result = "什么都没有呢~";
+            canCopy = false;
+            return;
+        }
+        try
+        {
+            result = cat.EndsWith("Σ(っ°Д°;)っ") || cat.EndsWith("_(:з」∠)_") ? 喵.喵喵Decode(cat) : 喵.喵喵Encode(cat);
+            canCopy = true;
+        }
+        catch (Exception e)
+        {
+            Snackbar.Add("出现错误了，但是猫咪也弄不清楚发生了什么呢~" + e.Message, Severity.Error);
+            canCopy = false;
+        }
+    }
+
+    async void copy()
+    {
+        await clipboard.WriteTextAsync(result);
+        Snackbar.Add("复制好啦！");
+    }
+}

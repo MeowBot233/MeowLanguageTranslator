@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31624.102
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeowLanguageTranslator", "MeowLanguageTranslator\MeowLanguageTranslator.csproj", "{72904604-53DB-4400-89BB-DA4BCFE93D4A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "喵语翻译器", "喵\喵语翻译器.csproj", "{2682AD9E-43BB-4DFB-8199-D73764E4C265}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{72904604-53DB-4400-89BB-DA4BCFE93D4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72904604-53DB-4400-89BB-DA4BCFE93D4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72904604-53DB-4400-89BB-DA4BCFE93D4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72904604-53DB-4400-89BB-DA4BCFE93D4A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2682AD9E-43BB-4DFB-8199-D73764E4C265}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2682AD9E-43BB-4DFB-8199-D73764E4C265}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2682AD9E-43BB-4DFB-8199-D73764E4C265}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2682AD9E-43BB-4DFB-8199-D73764E4C265}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EA03FB21-8DCE-4B92-9A9E-6D973415273E}
+	EndGlobalSection
+EndGlobal

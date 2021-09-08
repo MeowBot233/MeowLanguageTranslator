@@ -1,0 +1,27 @@
+﻿@page "/about"
+@inject NavigationManager NavigationManager
+
+<MudText Typo="Typo.h4" Align="Align.Center">喵语翻译器</MudText>
+<MudText Typo="Typo.h5" Align="Align.Center">by 坊洛酱</MudText>
+
+<MudText Typo="Typo.body1" Align="Align.Center">你可以点击右上角的 GitHub 图标去看看源码喵</MudText>
+<MudText Typo="Typo.body2" Align="Align.Center">欢迎来我的<MudLink Href="https://fangluo.top/" Typo="Typo.body2">博客</MudLink>看看~</MudText>
+
+
+
+@code {
+    [CascadingParameter] MainLayout layout { get; set; }
+    protected override void OnInitialized()
+    {
+
+        layout.BackEvent += back;
+        layout.CanBack = true;
+        layout.Title = "关于";
+        base.OnInitialized();
+    }
+    private void back()
+    {
+        NavigationManager.Back();
+        layout.BackEvent -= back;
+    }
+}
