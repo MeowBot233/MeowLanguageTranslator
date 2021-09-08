@@ -1,10 +1,10 @@
 {
-  "name": "MeowLanguageTranslator",
-  "short_name": "MeowLanguageTranslator",
+  "name": "喵语翻译器",
+  "short_name": "喵语翻译器",
   "start_url": "./",
   "display": "standalone",
   "background_color": "#ffffff",
-  "theme_color": "#03173d",
+  "theme_color": "#ff9ca8",
   "icons": [
     {
       "src": "icon-512.png",
